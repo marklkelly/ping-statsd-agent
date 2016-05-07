@@ -1,7 +1,6 @@
-FROM registry.applifier.info:5000/applifier-nodejs:0.10.36-2
+FROM node:0.12.0
 
-ADD ./ /app
-
+ADD ./src /app
 RUN cd /app && npm install
-
-CMD node /app/main.js /data/hosts.json
+ADD ./data /app/data
+CMD node /app/main.js /app/data/hosts.json
